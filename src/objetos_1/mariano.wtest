@@ -30,7 +30,7 @@ describe "tests de mariano" {
 	}
 	
 	test "sin TACC"{
-		assert.equals(true,mariano.hayGolosinasSinTACC())
+		assert.equals(true, mariano.hayGolosinasSinTACC())
 	}
 	
 }

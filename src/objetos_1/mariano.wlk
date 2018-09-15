@@ -18,26 +18,10 @@ object mariano {
 	method desechar(unaGolosina){
 		golosinas.remove(unaGolosina)
 	}
-	method hayGolosinasSinTACC(){
-		golosinas.any({
-			golosina => golosina.libreGluten()
-		})
-	}
-	method preciosCuidados(){
-		golosinas.all({
-			golosina => golosina.precio()<=10
-		})
-	}
-	method golosinaDeSabor(unSabor){
-		golosinas.findOrElse({
-			golosina => golosina.gusto() == unSabor
-		},{'No hay golosinas de sabor: ' + unSabor})
-	}
-	method golosinasDeSabor(unSabor){
-		golosinas.filter({
-			golosina => golosina.gusto() == unSabor
-		})
-	}
+	method hayGolosinasSinTACC() = golosinas.any({golosina => golosina.libreGluten()})
+	method preciosCuidados() = golosinas.all({golosina => golosina.precio()<=10})
+	method golosinaDeSabor(unSabor) = golosinas.findOrElse({golosina => golosina.gusto() == unSabor},{'No hay golosinas de sabor: ' + unSabor})
+	method golosinasDeSabor(unSabor) = golosinas.filter({golosina => golosina.gusto() == unSabor})
 	method sabores(){
 		golosinas.forEach({
 			golosina => saboresDeGolosinas += [golosina.gusto()]
@@ -56,7 +40,7 @@ object mariano {
 	// tuve que usar set (previamente chequeando en la documentacion como usar asSet() y difference())
 	// ya que no se me ocurria otra forma asi de facil.
 	
-	method gustosFaltantes(gustosDeseados) = gustosDeseados.asSet().difference(self.sabores())
+	method gustosFaltantes(gustosDeseados) = gustosDeseados.asSet().difference(self.sabores().asSet())
 	// previo al uso de este metodo tenemos que 'comprar' varias golosinas
 	// para tener gustos guardados
 		

@@ -38,12 +38,12 @@ describe "tests de las golosinas"{
 	}
 	test "mordida 1 chupetin"{
 		chupetin.mordisco()
-		assert.equals(4.9, chupetin.peso())
+		assert.equals(6.3, chupetin.peso())
 	}
 	test "mordida 2 chupetin"{
 		chupetin.mordisco()
 		chupetin.mordisco()
-		assert.equals(3.43, chupetin.peso())
+		assert.equals(5.67, chupetin.peso())
 	}
 	test "Oblea"{
 		assert.equals(250, oblea.peso())
@@ -111,9 +111,10 @@ describe "tests de las golosinas"{
 		assert.that(golosinaBaniada.libreGluten())
 		assert.equals('frutilla', golosinaBaniada.gusto())
 		//---------------------------------
+		chocolatin.pesoInicial(10)
 		golosinaBaniada.baniaA(chocolatin)
-		assert.equals(104, golosinaBaniada.peso())
-		assert.equals(52, golosinaBaniada.precio())
+		assert.equals(14, golosinaBaniada.peso())
+		assert.equals(7, golosinaBaniada.precio())
 		assert.that(!golosinaBaniada.libreGluten())
 		assert.equals('chocolate', golosinaBaniada.gusto())
 		//--------------------------------

@@ -35,7 +35,7 @@ object chupetin {
 	method peso() { return peso }
 	method mordisco() {
 		if(peso>=2){
-			peso = peso * 0.7
+			peso *= 0.9
 		}
 	}
 	method gusto() { return "naranja" }
@@ -49,9 +49,9 @@ object oblea {
 	method peso() { return peso }
 	method mordisco() {
 		if(peso>70){
-			peso = peso - (peso/2)
+			peso *= 0.5
 		}else if(peso<70){
-			peso = peso - (peso/4)
+			peso *= 0.75
 		}
 	}
 	method gusto() { return "vainilla" }
@@ -73,7 +73,7 @@ object chocolatin {
 
 	method precio() { return 0.50 * pesoInicial }
 	method peso() { return pesoActual }
-	method mordisco() { pesoActual = pesoActual - 2 }
+	method mordisco() { pesoActual -= 2 }
 	method gusto() { return "chocolate" }
 	method libreGluten() { return false }
 }
@@ -97,15 +97,15 @@ object golosinaBaniada {
 object tuttifrutti {
 	// como manejar el cambio de sabor ??
 	var property peso = 5
-	var property libreGluten
+	var property libreGluten // causa un aviso pero se inicializa durante los test o en repl
 	var sabores = ['frutilla','chocolate','naranja']
 	var saborActual = sabores.first()
-	var cantMordiscos = 0
+	var mordiscos = 0
 	
 	method precio() = if(libreGluten) 7 else 10
 	method mordisco() {
-		cantMordiscos = if(cantMordiscos<2) cantMordiscos + 1 else 0
-		saborActual = sabores.get(cantMordiscos)
+		mordiscos = if(mordiscos<2) mordiscos + 1 else 0
+		saborActual = sabores.get(mordiscos)
 	}
 	method gusto() { return saborActual }
 
