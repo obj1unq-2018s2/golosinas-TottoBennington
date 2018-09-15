@@ -50,7 +50,7 @@ object oblea {
 	method mordisco() {
 		if(peso>70){
 			peso = peso - (peso/2)
-		}else{
+		}else if(peso<70){
 			peso = peso - (peso/4)
 		}
 	}
