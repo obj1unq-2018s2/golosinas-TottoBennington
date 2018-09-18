@@ -3,13 +3,12 @@ object mariano {
 	// para este objeto no damos pistas
 	// definimos algunos métodos para que compile el test
 	var saboresDeGolosinas = []
-	var golosinas = []
+	var property golosinas = []
 	method comprar(golosina) {
 		golosinas.add(golosina)
 		// no se si deberia de usar self.golosinas().add(golosina) en lugar de golosinas.add(..)
 	}
-	method golosinas() = golosinas
-	
+
 	method probarGolosinas() {
 		golosinas.forEach({
 			golosina => golosina.mordisco()
@@ -36,11 +35,11 @@ object mariano {
 		golosina => golosina.peso()
 	})
 	
-	method golosinasFaltantes(golosinasDeseadas) = golosinasDeseadas.asSet().difference(golosinas.asSet())
+	method golosinasFaltantes(golosinasDeseadas) = golosinasDeseadas.difference(golosinas.asSet())
 	// tuve que usar set (previamente chequeando en la documentacion como usar asSet() y difference())
 	// ya que no se me ocurria otra forma asi de facil.
-	
-	method gustosFaltantes(gustosDeseados) = gustosDeseados.asSet().difference(self.sabores().asSet())
+
+	method gustosFaltantes(gustosDeseados) = gustosDeseados.difference(self.sabores().asSet())
 	// previo al uso de este metodo tenemos que 'comprar' varias golosinas
 	// para tener gustos guardados
 		
